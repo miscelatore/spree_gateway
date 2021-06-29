@@ -2,6 +2,9 @@ module Spree
   class Gateway::StripeGateway < Gateway
     preference :secret_key, :string
     preference :publishable_key, :string
+    #preference :server, :hidden, default: 'live'
+    preference :server, :hidden, default: 'test'
+    preference :test_mode, :hidden, default: false
 
     CARD_TYPE_MAPPING = {
       'American Express' => 'american_express',
@@ -140,6 +143,7 @@ module Spree
 
     def app_info
       name_with_version = "SpreeGateway/#{SpreeGateway.version}"
+      # TODO: customize url by HTTP_ENV or other things
       url = 'https://spreecommerce.org'
       "#{name_with_version} #{url}"
     end
