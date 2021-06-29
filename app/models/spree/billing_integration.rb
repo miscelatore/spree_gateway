@@ -2,8 +2,8 @@ module Spree
   class BillingIntegration < PaymentMethod
     validates :name, presence: true
 
-    preference :server, :string, default: 'test'
-    preference :test_mode, :boolean, default: true
+    #preference :server, :string, default: 'test'
+    #preference :test_mode, :boolean, default: false
 
     def provider
       integration_options = options
